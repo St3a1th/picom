@@ -1,16 +1,16 @@
 #include <errno.h>
 #include <string.h>
 #ifdef HAS_INOTIFY
-#include <sys/inotify.h>
+#	include <sys/inotify.h>
 #elif HAS_KQUEUE
 // clang-format off
-#include <sys/types.h>
+	#include <sys/types.h>
 // clang-format on
-#include <sys/event.h>
-#undef EV_ERROR              // Avoid clashing with libev's EV_ERROR
-#include <fcntl.h>           // For O_RDONLY
-#include <sys/time.h>        // For struct timespec
-#include <unistd.h>          // For open
+#	include <sys/event.h>
+#	undef EV_ERROR              // Avoid clashing with libev's EV_ERROR
+#	include <fcntl.h>           // For O_RDONLY
+#	include <sys/time.h>        // For struct timespec
+#	include <unistd.h>          // For open
 #endif
 
 #include <ev.h>
@@ -154,13 +154,13 @@ bool file_watch_add(void *_fwr, const char *filename, file_watch_cb_t cb, void *
 
 	uint32_t fflags = NOTE_DELETE | NOTE_RENAME | NOTE_REVOKE | NOTE_ATTRIB;
 	// NOTE_CLOSE_WRITE is relatively new, so we cannot just use it
-#ifdef NOTE_CLOSE_WRITE
+#	ifdef NOTE_CLOSE_WRITE
 	fflags |= NOTE_CLOSE_WRITE;
-#else
+#	else
 	// NOTE_WRITE will receive notification more frequent than necessary, so is less
 	// preferrable
 	fflags |= NOTE_WRITE;
-#endif
+#	endif
 	struct kevent ev = {
 	    .ident = (unsigned int)wd,        // the wd < 0 case is checked above
 	    .filter = EVFILT_VNODE,

@@ -16,15 +16,15 @@
 #include <xcb/xfixes.h>
 
 #ifdef CONFIG_LIBCONFIG
-#include <libconfig.h>
+#	include <libconfig.h>
 #endif
 
 #include "compiler.h"
 #include "kernel.h"
 #include "log.h"
 #include "region.h"
-#include "win_defs.h"
 #include "types.h"
+#include "win_defs.h"
 
 typedef struct session session_t;
 

@@ -6,7 +6,7 @@
 #include <xcb/render.h>
 #include <xcb/xcb.h>
 #ifdef CONFIG_OPENGL
-#include "backend/gl/glx.h"
+#	include "backend/gl/glx.h"
 #endif
 #include "region.h"
 

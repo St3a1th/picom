@@ -20,8 +20,8 @@ struct list_node {
 };
 
 #define list_entry(ptr, type, node) container_of(ptr, type, node)
-#define list_next_entry(ptr, node) list_entry((ptr)->node.next, __typeof__(*(ptr)), node)
-#define list_prev_entry(ptr, node) list_entry((ptr)->node.prev, __typeof__(*(ptr)), node)
+#define list_next_entry(ptr, node)  list_entry((ptr)->node.next, __typeof__(*(ptr)), node)
+#define list_prev_entry(ptr, node)  list_entry((ptr)->node.prev, __typeof__(*(ptr)), node)
 
 /// Insert a new node between two adjacent nodes in the list
 static inline void __list_insert_between(struct list_node *prev, struct list_node *next,

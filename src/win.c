@@ -33,12 +33,12 @@
 #include "x.h"
 
 #ifdef CONFIG_DBUS
-#include "dbus.h"
+#	include "dbus.h"
 #endif
 
 #ifdef CONFIG_OPENGL
 // TODO remove this include
-#include "opengl.h"
+#	include "opengl.h"
 #endif
 
 #include "win.h"

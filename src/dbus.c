@@ -40,33 +40,33 @@ struct cdbus_data {
 
 // Window type
 typedef uint32_t cdbus_window_t;
-#define CDBUS_TYPE_WINDOW DBUS_TYPE_UINT32
+#define CDBUS_TYPE_WINDOW     DBUS_TYPE_UINT32
 #define CDBUS_TYPE_WINDOW_STR DBUS_TYPE_UINT32_AS_STRING
 
 typedef uint32_t cdbus_enum_t;
-#define CDBUS_TYPE_ENUM DBUS_TYPE_UINT32
+#define CDBUS_TYPE_ENUM     DBUS_TYPE_UINT32
 #define CDBUS_TYPE_ENUM_STR DBUS_TYPE_UINT32_AS_STRING
 
-#define CDBUS_SERVICE_NAME "com.github.chjj.compton"
-#define CDBUS_INTERFACE_NAME CDBUS_SERVICE_NAME
-#define CDBUS_OBJECT_NAME "/com/github/chjj/compton"
-#define CDBUS_ERROR_PREFIX CDBUS_INTERFACE_NAME ".error"
-#define CDBUS_ERROR_UNKNOWN CDBUS_ERROR_PREFIX ".unknown"
+#define CDBUS_SERVICE_NAME    "com.github.chjj.compton"
+#define CDBUS_INTERFACE_NAME  CDBUS_SERVICE_NAME
+#define CDBUS_OBJECT_NAME     "/com/github/chjj/compton"
+#define CDBUS_ERROR_PREFIX    CDBUS_INTERFACE_NAME ".error"
+#define CDBUS_ERROR_UNKNOWN   CDBUS_ERROR_PREFIX ".unknown"
 #define CDBUS_ERROR_UNKNOWN_S "Well, I don't know what happened. Do you?"
-#define CDBUS_ERROR_BADMSG CDBUS_ERROR_PREFIX ".bad_message"
+#define CDBUS_ERROR_BADMSG    CDBUS_ERROR_PREFIX ".bad_message"
 #define CDBUS_ERROR_BADMSG_S                                                             \
 	"Unrecognized command. Beware compton "                                          \
 	"cannot make you a sandwich."
-#define CDBUS_ERROR_BADARG CDBUS_ERROR_PREFIX ".bad_argument"
-#define CDBUS_ERROR_BADARG_S "Failed to parse argument %d: %s"
-#define CDBUS_ERROR_BADWIN CDBUS_ERROR_PREFIX ".bad_window"
-#define CDBUS_ERROR_BADWIN_S "Requested window %#010x not found."
-#define CDBUS_ERROR_BADTGT CDBUS_ERROR_PREFIX ".bad_target"
-#define CDBUS_ERROR_BADTGT_S "Target \"%s\" not found."
-#define CDBUS_ERROR_FORBIDDEN CDBUS_ERROR_PREFIX ".forbidden"
+#define CDBUS_ERROR_BADARG      CDBUS_ERROR_PREFIX ".bad_argument"
+#define CDBUS_ERROR_BADARG_S    "Failed to parse argument %d: %s"
+#define CDBUS_ERROR_BADWIN      CDBUS_ERROR_PREFIX ".bad_window"
+#define CDBUS_ERROR_BADWIN_S    "Requested window %#010x not found."
+#define CDBUS_ERROR_BADTGT      CDBUS_ERROR_PREFIX ".bad_target"
+#define CDBUS_ERROR_BADTGT_S    "Target \"%s\" not found."
+#define CDBUS_ERROR_FORBIDDEN   CDBUS_ERROR_PREFIX ".forbidden"
 #define CDBUS_ERROR_FORBIDDEN_S "Incorrect password, access denied."
-#define CDBUS_ERROR_CUSTOM CDBUS_ERROR_PREFIX ".custom"
-#define CDBUS_ERROR_CUSTOM_S "%s"
+#define CDBUS_ERROR_CUSTOM      CDBUS_ERROR_PREFIX ".custom"
+#define CDBUS_ERROR_CUSTOM_S    "%s"
 
 #define cdbus_reply_err(ps, srcmsg, err_name, err_format, ...)                           \
 	cdbus_reply_errm((ps), dbus_message_new_error_printf(                            \
@@ -226,7 +226,8 @@ typedef struct ev_dbus_timer {
 /**
  * Callback for handling a D-Bus timeout.
  */
-static void cdbus_callback_handle_timeout(EV_P attr_unused, ev_timer *w, int revents attr_unused) {
+static void
+cdbus_callback_handle_timeout(EV_P attr_unused, ev_timer *w, int revents attr_unused) {
 	ev_dbus_timer *t = (void *)w;
 	dbus_timeout_handle(t->t);
 }

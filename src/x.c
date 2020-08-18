@@ -16,7 +16,7 @@
 
 #include "atom.h"
 #ifdef CONFIG_OPENGL
-#include "backend/gl/glx.h"
+#	include "backend/gl/glx.h"
 #endif
 #include "common.h"
 #include "compiler.h"

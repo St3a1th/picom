@@ -17,15 +17,15 @@
 
 // libpcre
 #ifdef CONFIG_REGEX_PCRE
-#include <pcre.h>
+#	include <pcre.h>
 
 // For compatibility with <libpcre-8.20
-#ifndef PCRE_STUDY_JIT_COMPILE
-#define PCRE_STUDY_JIT_COMPILE 0
-#define LPCRE_FREE_STUDY(extra) pcre_free(extra)
-#else
-#define LPCRE_FREE_STUDY(extra) pcre_free_study(extra)
-#endif
+#	ifndef PCRE_STUDY_JIT_COMPILE
+#		define PCRE_STUDY_JIT_COMPILE  0
+#		define LPCRE_FREE_STUDY(extra) pcre_free(extra)
+#	else
+#		define LPCRE_FREE_STUDY(extra) pcre_free_study(extra)
+#	endif
 
 #endif
 
@@ -1060,14 +1060,14 @@ static bool c2_l_postprocess(session_t *ps, c2_l_t *pleaf) {
 			          pleaf->ptnstr, erroffset, error);
 			return false;
 		}
-#ifdef CONFIG_REGEX_PCRE_JIT
+#	ifdef CONFIG_REGEX_PCRE_JIT
 		pleaf->regex_pcre_extra =
 		    pcre_study(pleaf->regex_pcre, PCRE_STUDY_JIT_COMPILE, &error);
 		if (!pleaf->regex_pcre_extra) {
 			printf("Pattern \"%s\": PCRE regular expression study failed: %s",
 			       pleaf->ptnstr, error);
 		}
-#endif
+#	endif
 
 		// Free the target string
 		// free(pleaf->tgt);

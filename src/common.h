@@ -36,18 +36,18 @@
 #include <X11/Xlib.h>
 #include <ev.h>
 #include <pixman.h>
-#include <xcb/xproto.h>
 #include <xcb/render.h>
 #include <xcb/sync.h>
+#include <xcb/xproto.h>
 
 #include "uthash_extra.h"
 #ifdef CONFIG_OPENGL
-#include "backend/gl/glx.h"
+#	include "backend/gl/glx.h"
 #endif
 
 // X resource checker
 #ifdef DEBUG_XRC
-#include "xrescheck.h"
+#	include "xrescheck.h"
 #endif
 
 // FIXME This list of includes should get shorter
@@ -55,11 +55,11 @@
 #include "backend/driver.h"
 #include "compiler.h"
 #include "config.h"
+#include "list.h"
 #include "region.h"
+#include "render.h"
 #include "types.h"
 #include "utils.h"
-#include "list.h"
-#include "render.h"
 #include "win_defs.h"
 #include "x.h"
 
@@ -89,14 +89,14 @@ typedef struct _ignore {
 } ignore_t;
 
 #ifdef CONFIG_OPENGL
-#ifdef DEBUG_GLX_DEBUG_CONTEXT
+#	ifdef DEBUG_GLX_DEBUG_CONTEXT
 typedef GLXContext (*f_glXCreateContextAttribsARB)(Display *dpy, GLXFBConfig config,
                                                    GLXContext share_context, Bool direct,
                                                    const int *attrib_list);
 typedef void (*GLDEBUGPROC)(GLenum source, GLenum type, GLuint id, GLenum severity,
                             GLsizei length, const GLchar *message, GLvoid *userParam);
 typedef void (*f_DebugMessageCallback)(GLDEBUGPROC, void *userParam);
-#endif
+#	endif
 
 typedef struct glx_prog_main {
 	/// GLSL program.
@@ -111,11 +111,11 @@ typedef struct glx_prog_main {
 	GLint unifm_time;
 } glx_prog_main_t;
 
-#define GLX_PROG_MAIN_INIT                                                               \
-	{                                                                                \
-		.prog = 0, .unifm_opacity = -1, .unifm_invert_color = -1,                \
-		.unifm_tex = -1, .unifm_time = -1                                        \
-	}
+#	define GLX_PROG_MAIN_INIT                                                       \
+		{                                                                        \
+			.prog = 0, .unifm_opacity = -1, .unifm_invert_color = -1,        \
+			.unifm_tex = -1, .unifm_time = -1                                \
+		}
 
 #else
 struct glx_prog_main {};
@@ -250,11 +250,11 @@ typedef struct session {
 	// Cached blur convolution kernels.
 	struct x_convolution_kernel **blur_kerns_cache;
 	/// If we should quit
-	bool quit:1;
+	bool quit : 1;
 	/// Whether there are pending updates, like window creation, etc.
 	/// TODO use separate flags for dfferent kinds of updates so we don't
 	/// waste our time.
-	bool pending_updates:1;
+	bool pending_updates : 1;
 
 	// === Expose event related ===
 	/// Pointer to an array of <code>XRectangle</code>-s of exposed region.

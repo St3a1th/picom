@@ -5,8 +5,8 @@
 
 #include <stdbool.h>
 
-#include "config.h"
 #include "compiler.h"
+#include "config.h"
 #include "driver.h"
 #include "kernel.h"
 #include "region.h"

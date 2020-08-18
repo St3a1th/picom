@@ -9,9 +9,9 @@
 #include <unistd.h>
 
 #ifdef CONFIG_OPENGL
-#include <GL/gl.h>
-#include "backend/gl/glx.h"
-#include "backend/gl/gl_common.h"
+#	include <GL/gl.h>
+#	include "backend/gl/gl_common.h"
+#	include "backend/gl/glx.h"
 #endif
 
 #include "compiler.h"
@@ -335,7 +335,8 @@ struct gl_string_marker_logger {
 	PFNGLSTRINGMARKERGREMEDYPROC gl_string_marker;
 };
 
-static void gl_string_marker_logger_write(struct log_target *tgt, const char *str, size_t len) {
+static void
+gl_string_marker_logger_write(struct log_target *tgt, const char *str, size_t len) {
 	auto g = (struct gl_string_marker_logger *)tgt;
 	g->gl_string_marker((GLsizei)len, str);
 }

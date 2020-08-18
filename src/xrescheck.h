@@ -14,9 +14,9 @@ typedef struct {
 	UT_hash_handle hh;
 } xrc_xid_record_t;
 
-#define M_POS_DATA_PARAMS const char *file, int line, const char *func
+#define M_POS_DATA_PARAMS      const char *file, int line, const char *func
 #define M_POS_DATA_PASSTHROUGH file, line, func
-#define M_POS_DATA __FILE__, __LINE__, __func__
+#define M_POS_DATA             __FILE__, __LINE__, __func__
 
 void xrc_add_xid_(XID xid, const char *type, M_POS_DATA_PARAMS);
 

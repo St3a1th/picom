@@ -32,7 +32,7 @@
 #include "opengl.h"
 
 #ifndef GL_TEXTURE_RECTANGLE
-#define GL_TEXTURE_RECTANGLE 0x84F5
+#	define GL_TEXTURE_RECTANGLE 0x84F5
 #endif
 
 static inline XVisualInfo *get_visualinfo_from_visual(session_t *ps, xcb_visualid_t visual) {
@@ -1038,7 +1038,8 @@ bool glx_render(session_t *ps, const glx_texture_t *ptex, int x, int y, int dx, 
 		if (pprogram->unifm_tex >= 0)
 			glUniform1i(pprogram->unifm_tex, 0);
 		if (pprogram->unifm_time >= 0)
-			glUniform1f(pprogram->unifm_time, (float)ts.tv_sec * 1000.0f + (float)ts.tv_nsec / 1.0e6f);
+			glUniform1f(pprogram->unifm_time, (float)ts.tv_sec * 1000.0f +
+			                                      (float)ts.tv_nsec / 1.0e6f);
 	}
 
 	// log_trace("Draw: %d, %d, %d, %d -> %d, %d (%d, %d) z %d", x, y, width, height,

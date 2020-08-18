@@ -7,17 +7,17 @@
 #include "log.h"
 
 #ifdef CONFIG_OPENGL
-#include "backend/gl/glx.h"
-#include "opengl.h"
+#	include "backend/gl/glx.h"
+#	include "opengl.h"
 #endif
 
 #ifdef CONFIG_VSYNC_DRM
-#include <drm.h>
-#include <errno.h>
-#include <fcntl.h>
-#include <sys/ioctl.h>
-#include <sys/stat.h>
-#include <sys/types.h>
+#	include <drm.h>
+#	include <errno.h>
+#	include <fcntl.h>
+#	include <sys/ioctl.h>
+#	include <sys/stat.h>
+#	include <sys/types.h>
 #endif
 
 #include "config.h"

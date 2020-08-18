@@ -19,8 +19,8 @@ struct backend_base;
 /// also the generic modesetting driver.
 /// This enum represents _both_ drivers.
 enum driver {
-	DRIVER_AMDGPU = 1, // AMDGPU for DDX, radeonsi for OpenGL
-	DRIVER_RADEON = 2, // ATI for DDX, mesa r600 for OpenGL
+	DRIVER_AMDGPU = 1,        // AMDGPU for DDX, radeonsi for OpenGL
+	DRIVER_RADEON = 2,        // ATI for DDX, mesa r600 for OpenGL
 	DRIVER_FGLRX = 4,
 	DRIVER_NVIDIA = 8,
 	DRIVER_NOUVEAU = 16,

@@ -23,7 +23,7 @@
 #include "backend/gl/gl_common.h"
 
 #define GLSL(version, ...) "#version " #version "\n" #__VA_ARGS__
-#define QUOTE(...) #__VA_ARGS__
+#define QUOTE(...)         #__VA_ARGS__
 
 static const GLuint vert_coord_loc = 0;
 static const GLuint vert_in_texcoord_loc = 1;

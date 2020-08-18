@@ -11,7 +11,7 @@
 
 // FIXME shouldn't need this
 #ifdef CONFIG_OPENGL
-#include <GL/gl.h>
+#	include <GL/gl.h>
 #endif
 
 #include "c2.h"

@@ -37,7 +37,7 @@
 #include "kernel.h"
 #include "picom.h"
 #ifdef CONFIG_OPENGL
-#include "opengl.h"
+#	include "opengl.h"
 #endif
 #include "backend/backend.h"
 #include "c2.h"
@@ -51,7 +51,7 @@
 #include "win.h"
 #include "x.h"
 #ifdef CONFIG_DBUS
-#include "dbus.h"
+#	include "dbus.h"
 #endif
 #include "atom.h"
 #include "event.h"

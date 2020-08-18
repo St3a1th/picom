@@ -32,8 +32,8 @@ enum log_level {
 	} while (0)
 #define log_trace(x, ...) LOG_UNLIKELY(TRACE, x, ##__VA_ARGS__)
 #define log_debug(x, ...) LOG_UNLIKELY(DEBUG, x, ##__VA_ARGS__)
-#define log_info(x, ...) LOG(INFO, x, ##__VA_ARGS__)
-#define log_warn(x, ...) LOG(WARN, x, ##__VA_ARGS__)
+#define log_info(x, ...)  LOG(INFO, x, ##__VA_ARGS__)
+#define log_warn(x, ...)  LOG(WARN, x, ##__VA_ARGS__)
 #define log_error(x, ...) LOG(ERROR, x, ##__VA_ARGS__)
 #define log_fatal(x, ...) LOG(FATAL, x, ##__VA_ARGS__)
 

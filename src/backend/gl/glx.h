@@ -4,19 +4,19 @@
 #include <stdbool.h>
 // Older version of glx.h defines function prototypes for these extensions...
 // Rename them to avoid conflicts
-#define glXSwapIntervalMESA glXSwapIntervalMESA_
-#define glXBindTexImageEXT glXBindTexImageEXT_
+#define glXSwapIntervalMESA   glXSwapIntervalMESA_
+#define glXBindTexImageEXT    glXBindTexImageEXT_
 #define glXReleaseTexImageEXT glXReleaseTexImageEXT
 #include <GL/glx.h>
 #undef glXSwapIntervalMESA
 #undef glXBindTexImageEXT
 #undef glXReleaseTexImageEXT
 #include <X11/Xlib.h>
-#include <xcb/xcb.h>
 #include <xcb/render.h>
+#include <xcb/xcb.h>
 
-#include "log.h"
 #include "compiler.h"
+#include "log.h"
 #include "utils.h"
 #include "x.h"
 
@@ -42,7 +42,6 @@ struct glx_fbconfig_criteria {
 };
 
 struct glx_fbconfig_info *glx_find_fbconfig(Display *, int screen, struct xvisual_info);
-
 
 struct glxext_info {
 	bool initialized;
