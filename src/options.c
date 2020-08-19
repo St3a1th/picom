@@ -117,6 +117,9 @@ static void usage(const char *argv0, int ret) {
 	    "--active-opacity opacity\n"
 	    "  Default opacity for active windows. (0.0 - 1.0)\n"
 	    "\n"
+	    "--corner-radius value\n"
+	    "  Round the corners of windows. (defaults to 0)\n"
+	    "\n"
 	    "--mark-wmwin-focused\n"
 	    "  Try to detect WM windows and mark them as active.\n"
 	    "\n"
@@ -439,6 +442,7 @@ static const struct option longopts[] = {
     {"blur-size", required_argument, NULL, 329},
     {"blur-deviation", required_argument, NULL, 330},
     {"shadow-color", required_argument, NULL, 331},
+    {"corner-radius", required_argument, NULL, 332},
     {"experimental-backends", no_argument, NULL, 733},
     {"monitor-repaint", no_argument, NULL, 800},
     {"diagnostics", no_argument, NULL, 801},
@@ -847,7 +851,10 @@ bool get_cfg(options_t *opt, int argc, char *const *argv, bool shadow_enable,
 			// --blur-deviation
 			opt->blur_deviation = atof(optarg);
 			break;
-
+		case 332:
+			// --cornor-radius
+			opt->corner_radius = atoi(optarg);
+			break;
 		P_CASEBOOL(733, experimental_backends);
 		P_CASEBOOL(800, monitor_repaint);
 		case 801: opt->print_diagnostics = true; break;
